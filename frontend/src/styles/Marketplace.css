@@ -1,0 +1,115 @@
+/* Marketplace */
+.marketplace-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.marketplace-header {
+  margin-bottom: 2rem;
+}
+
+.marketplace-header h1 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.marketplace-header p {
+  color: var(--text-secondary);
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.marketplace-card {
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s;
+}
+
+.marketplace-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.marketplace-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.marketplace-card-header h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-right: 0.5rem;
+}
+
+.slot-description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.slot-owner {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.slot-owner strong {
+  color: var(--text-primary);
+}
+
+.slot-times {
+  margin-bottom: 1.5rem;
+}
+
+.slot-time {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.slot-time strong {
+  color: var(--text-primary);
+}
+
+.marketplace-card .btn {
+  width: 100%;
+}
+
+/* Swap Modal Specific */
+.swap-target {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bg-color);
+  border-radius: 0.375rem;
+}
+
+.swap-target h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.swap-slot-info {
+  color: var(--text-secondary);
+}
+
+.swap-slot-info strong {
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slots-grid {
+    grid-template-columns: 1fr;
+  }
+}

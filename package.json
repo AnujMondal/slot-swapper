@@ -1,0 +1,10 @@
+{
+  "name": "slotswapper",
+  "version": "1.0.0",
+  "description": "Peer-to-peer time-slot scheduling application",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}
