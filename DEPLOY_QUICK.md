@@ -3,6 +3,7 @@
 ## Step 1: Push to GitHub
 
 ### Create a new repository on GitHub:
+
 1. Go to https://github.com/new
 2. Name it: `slotswapper`
 3. Keep it public (or private if you prefer)
@@ -10,6 +11,7 @@
 5. Click "Create repository"
 
 ### Push your code:
+
 ```bash
 # Add your GitHub repository as remote
 git remote add origin https://github.com/YOUR_USERNAME/slotswapper.git
@@ -19,6 +21,7 @@ git push -u origin main
 ```
 
 **Or use the automated script:**
+
 ```bash
 ./deploy.sh
 ```
@@ -83,6 +86,7 @@ vercel --prod
 ```
 
 **Or use Vercel Dashboard:**
+
 1. Go to https://vercel.com
 2. Import your GitHub repository
 3. Framework Preset: Vite
@@ -128,6 +132,7 @@ Set environment variable `VITE_API_URL` in Netlify dashboard.
 ## 🎯 Quick Commands
 
 ### Push updates to GitHub:
+
 ```bash
 git add .
 git commit -m "Your commit message"
@@ -135,6 +140,7 @@ git push
 ```
 
 ### Rebuild and redeploy:
+
 - **Render**: Auto-deploys on git push
 - **Vercel**: Auto-deploys on git push
 - **Netlify**: Auto-deploys on git push
@@ -144,6 +150,7 @@ git push
 ## 🔧 Environment Variables Reference
 
 ### Backend (Production)
+
 ```env
 NODE_ENV=production
 PORT=10000
@@ -153,6 +160,7 @@ JWT_EXPIRES_IN=7d
 ```
 
 ### Frontend (Production)
+
 ```env
 VITE_API_URL=https://your-backend-url.com
 ```
@@ -162,17 +170,20 @@ VITE_API_URL=https://your-backend-url.com
 ## 🆘 Troubleshooting
 
 ### Backend deployment fails:
+
 - Check build logs for errors
 - Ensure all dependencies are in `package.json`
 - Verify DATABASE_URL is correct
 - Make sure JWT_SECRET is set
 
 ### Frontend can't connect to backend:
+
 - Check `VITE_API_URL` is set correctly
 - Verify backend CORS allows frontend domain
 - Check browser console for errors
 
 ### Database connection fails:
+
 - Use **Internal Database URL** for Render
 - Check database credentials
 - Ensure database is running
@@ -182,6 +193,7 @@ VITE_API_URL=https://your-backend-url.com
 ## 📱 Mobile Testing
 
 After deployment, test on mobile:
+
 1. Open deployed frontend URL on mobile browser
 2. Test all features
 3. Check responsive design
@@ -193,6 +205,7 @@ After deployment, test on mobile:
 Your SlotSwapper app is now live! Share your frontend URL with others.
 
 Example URLs:
+
 - **Frontend**: https://slotswapper.vercel.app
 - **Backend API**: https://slotswapper-api.onrender.com
 
@@ -201,6 +214,7 @@ Example URLs:
 ## 📝 Update README
 
 Don't forget to update your README.md with:
+
 - Live demo links
 - Screenshots
 - Any special setup instructions
