@@ -7,7 +7,7 @@ import EventModal from "../components/EventModal";
 import "../styles/Dashboard.css";
 
 const Dashboard: React.FC = () => {
-  const { } = useAuth();
+  const {} = useAuth();
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
