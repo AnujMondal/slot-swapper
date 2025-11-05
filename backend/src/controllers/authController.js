@@ -3,15 +3,7 @@ import { User } from "../models/index.js";
 
 // Generate JWT token
 const generateToken = (userId) => {
-  const secret = process.env.JWT_SECRET;
-  console.log("JWT_SECRET exists:", !!secret);
-  console.log("JWT_SECRET length:", secret ? secret.length : 0);
-  
-  if (!secret) {
-    throw new Error("JWT_SECRET is not configured. Please set JWT_SECRET environment variable.");
-  }
-  
-  return jwt.sign({ userId }, secret, {
+  return jwt.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN || "7d",
   });
 };
