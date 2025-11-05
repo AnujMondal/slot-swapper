@@ -568,8 +568,8 @@ This project is created as a technical assessment for ServiceHive Full Stack Int
 
 ---
 
-**Author**: Your Name  
+**Author**: Anuj Mondal
 **Date**: November 2025  
-**Contact**: your.email@example.com
+**Contact**: anujmondal2504@gmail.com
 
 Thank you for reviewing my submission! I look forward to discussing the implementation and design decisions.
