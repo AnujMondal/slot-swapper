@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
 import api from "../utils/api";
 import { Event, ApiResponse } from "../types";
 import MarketplaceCard from "../components/MarketplaceCard";

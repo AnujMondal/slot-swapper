@@ -6,7 +6,7 @@ import SwapRequestCard from "../components/SwapRequestCard";
 import "../styles/Requests.css";
 
 const Requests: React.FC = () => {
-  const { user } = useAuth();
+  const { } = useAuth();
   const [incomingRequests, setIncomingRequests] = useState<SwapRequest[]>([]);
   const [outgoingRequests, setOutgoingRequests] = useState<SwapRequest[]>([]);
   const [loading, setLoading] = useState(true);
