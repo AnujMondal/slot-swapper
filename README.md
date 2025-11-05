@@ -2,255 +2,139 @@
 
 A peer-to-peer time-slot scheduling application that allows users to swap calendar events with each other.
 
-## 📋 Overview
+## � Live Demo
 
-SlotSwapper is a full-stack web application where users can:
+- **Frontend**: [https://slot-swapper-psl-two.vercel.app](https://slot-swapper-psl-two.vercel.app)
+- **Backend API**: [https://slot-swapper-r4uv.onrender.com](https://slot-swapper-r4uv.onrender.com)
 
-- Manage their calendar events
-- Mark events as "swappable"
-- Browse swappable slots from other users
-- Request to swap their slots with others
-- Accept or reject incoming swap requests
-- Automatically exchange slot ownership when swaps are accepted
+## �📋 Overview
 
-Built with **React** (TypeScript) on the frontend and **Node.js/Express** with **PostgreSQL** on the backend, featuring JWT authentication and a complete swap management system.
+SlotSwapper is a full-stack web application where users can manage calendar events, mark them as swappable, browse slots from other users, request swaps, and automatically exchange ownership when swaps are accepted.
 
-## 🏗️ Architecture
+**Tech Stack**: React (TypeScript), Node.js/Express, PostgreSQL, JWT Authentication
 
-### Technology Stack
+## ✨ Features
 
-**Frontend:**
+- 🔐 JWT Authentication (signup/login)
+- 📅 Event CRUD operations
+- 🔄 Swap marketplace with filtering
+- 💱 Atomic swap transactions
+- 🎨 Modern responsive UI
+- 📱 Mobile-friendly design
 
-- React 18 with TypeScript
-- React Router for navigation
-- Axios for API calls
-- date-fns for date formatting
-- Vite as build tool
+## 🏗️ Tech Stack
 
-**Backend:**
+**Frontend**: React 18, TypeScript, Vite, React Router, Axios  
+**Backend**: Node.js, Express, Sequelize ORM, JWT  
+**Database**: PostgreSQL with UUID primary keys  
+**DevOps**: Docker, Docker Compose
 
-- Node.js with Express
-- PostgreSQL database
-- Sequelize ORM
-- JWT for authentication
-- bcryptjs for password hashing
-
-**DevOps:**
-
-- Docker & Docker Compose for containerization
-- PostgreSQL 15 Alpine
-
-### Database Schema
-
-The application uses three main tables:
-
-1. **users**
-
-   - id (UUID, Primary Key)
-   - name (STRING)
-   - email (STRING, Unique)
-   - password (STRING, Hashed)
-   - createdAt, updatedAt (TIMESTAMPS)
-
-2. **events** (Calendar Slots)
-
-   - id (UUID, Primary Key)
-   - title (STRING)
-   - description (TEXT, Optional)
-   - startTime (DATE)
-   - endTime (DATE)
-   - status (ENUM: 'BUSY', 'SWAPPABLE', 'SWAP_PENDING')
-   - userId (UUID, Foreign Key → users)
-   - createdAt, updatedAt (TIMESTAMPS)
-
-3. **swap_requests**
-   - id (UUID, Primary Key)
-   - requesterId (UUID, Foreign Key → users)
-   - receiverId (UUID, Foreign Key → users)
-   - requesterSlotId (UUID, Foreign Key → events)
-   - receiverSlotId (UUID, Foreign Key → events)
-   - status (ENUM: 'PENDING', 'ACCEPTED', 'REJECTED')
-   - message (TEXT, Optional)
-   - createdAt, updatedAt (TIMESTAMPS)
-
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
+- Node.js v16+, PostgreSQL v12+, Docker (optional)
 
-- Node.js (v16 or higher)
-- PostgreSQL (v12 or higher)
-- npm or yarn
-- Docker & Docker Compose (optional, for containerized setup)
-
-### Option 1: Local Setup (Without Docker)
-
-#### 1. Clone the Repository
+### Local Setup
 
 ```bash
-cd "Service Hive"
-cd slotswapper
-```
-
-#### 2. Set Up PostgreSQL Database
-
-Create a PostgreSQL database named `slotswapper`:
-
-```bash
-# Using psql
+# 1. Clone & setup database
+git clone https://github.com/AnujMondal/slot-swapper.git
+cd slot-swapper
 createdb slotswapper
 
-# Or using SQL
-psql -U postgres
-CREATE DATABASE slotswapper;
-```
-
-#### 3. Set Up Backend
-
-```bash
+# 2. Backend setup
 cd backend
-
-# Install dependencies
 npm install
-
-# Create .env file
 cp .env.example .env
+# Edit .env with your database credentials and JWT_SECRET
+npm run dev  # Runs on http://localhost:5001
 
-# Edit .env file with your database credentials
-# Make sure to set:
-# - DB_HOST=localhost
-# - DB_PORT=5432
-# - DB_NAME=slotswapper
-# - DB_USER=your_postgres_user
-# - DB_PASSWORD=your_postgres_password
-# - JWT_SECRET=your-secret-key
-
-# Start the backend server
-npm run dev
-```
-
-The backend API will be available at `http://localhost:5000`
-
-#### 4. Set Up Frontend
-
-Open a new terminal:
-
-```bash
+# 3. Frontend setup (new terminal)
 cd frontend
-
-# Install dependencies
 npm install
-
-# Start the development server
-npm run dev
+npm run dev  # Runs on http://localhost:3000
 ```
 
-The frontend will be available at `http://localhost:3000`
-
-### Option 2: Docker Setup (Recommended)
-
-#### 1. Prerequisites
-
-Ensure Docker and Docker Compose are installed on your system.
-
-#### 2. Start All Services
-
-From the project root directory:
+### Docker Setup
 
 ```bash
-docker-compose up --build
+docker-compose up --build  # Access at http://localhost:3000
+docker-compose down        # Stop services
 ```
 
-This will:
+## 📚 API Endpoints
 
-- Start PostgreSQL database on port 5432
-- Start backend API on port 5000
-- Start frontend on port 3000
+**Base URL**: `http://localhost:5001/api`
 
-#### 3. Access the Application
+### Authentication
+- `POST /auth/signup` - Register new user
+- `POST /auth/login` - Login user
+- `GET /auth/me` - Get current user (Protected)
 
-Open your browser and navigate to `http://localhost:3000`
+### Events
+- `GET /events` - Get user's events (Protected)
+- `POST /events` - Create event (Protected)
+- `PUT /events/:id` - Update event (Protected)
+- `DELETE /events/:id` - Delete event (Protected)
 
-#### 4. Stop Services
+### Marketplace
+- `GET /swaps/marketplace` - Get swappable slots (Protected)
 
-```bash
-docker-compose down
+### Swap Requests
+- `GET /swaps/requests` - Get swap requests (Protected)
+- `POST /swaps/requests` - Create swap request (Protected)
+- `PUT /swaps/requests/:id/accept` - Accept swap (Protected)
+- `PUT /swaps/requests/:id/reject` - Reject swap (Protected)
+
+📖 **Detailed API Documentation**: See [API_DOCUMENTATION.md](./API_DOCUMENTATION.md)
+
+## 📂 Project Structure
+
+```
+slotswapper/
+├── backend/          # Node.js/Express API
+│   ├── src/
+│   │   ├── config/   # Database config
+│   │   ├── models/   # Sequelize models
+│   │   ├── controllers/ # Business logic
+│   │   ├── middleware/  # JWT auth
+│   │   └── routes/   # API routes
+│   └── Dockerfile
+├── frontend/         # React/TypeScript app
+│   ├── src/
+│   │   ├── components/ # Reusable components
+│   │   ├── pages/    # Route pages
+│   │   ├── context/  # Auth context
+│   │   ├── utils/    # API client
+│   │   └── styles/   # CSS files
+│   └── Dockerfile
+└── docker-compose.yml
 ```
 
-To remove volumes as well:
+## 🔒 Security Features
 
-```bash
-docker-compose down -v
-```
+- Password hashing (bcrypt)
+- JWT token authentication
+- Protected API routes
+- SQL injection prevention (Sequelize ORM)
+- Input validation & sanitization
 
-## 📚 API Documentation
+## 📝 Documentation
 
-### Base URL
+- **[API Documentation](./API_DOCUMENTATION.md)** - Detailed API endpoints
+- **[Deployment Guide](./DEPLOYMENT.md)** - Production deployment steps
+- **[Quick Start](./QUICKSTART.md)** - Fast setup guide
+- **[Troubleshooting](./TROUBLESHOOTING.md)** - Common issues & solutions
 
-```
-http://localhost:5000/api
-```
+## 📄 License
 
-### Authentication Endpoints
+MIT License - Created for ServiceHive Full Stack Intern technical assessment.
 
-#### Sign Up
+---
 
-```http
-POST /api/auth/signup
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "password123"
-}
-
-Response: 201 Created
-{
-  "success": true,
-  "message": "User registered successfully.",
-  "data": {
-    "user": { ... },
-    "token": "jwt_token_here"
-  }
-}
-```
-
-#### Log In
-
-```http
-POST /api/auth/login
-Content-Type: application/json
-
-{
-  "email": "john@example.com",
-  "password": "password123"
-}
-
-Response: 200 OK
-{
-  "success": true,
-  "message": "Login successful.",
-  "data": {
-    "user": { ... },
-    "token": "jwt_token_here"
-  }
-}
-```
-
-#### Get Current User
-
-```http
-GET /api/auth/me
-Authorization: Bearer {token}
-
-Response: 200 OK
-{
-  "success": true,
-  "data": {
-    "user": { ... }
-  }
-}
-```
+**Author**: Anuj Mondal  
+**GitHub**: [github.com/AnujMondal](https://github.com/AnujMondal)  
+**Date**: November 2025
 
 ### Event (Calendar Slot) Endpoints
 
