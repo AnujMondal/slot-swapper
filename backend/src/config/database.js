@@ -16,10 +16,10 @@ const sequelize = process.env.DATABASE_URL
       dialect: "postgres",
       logging: process.env.NODE_ENV === "development" ? console.log : false,
       dialectOptions: {
-        ssl: {
+        ssl: process.env.NODE_ENV === "production" ? {
           require: true,
           rejectUnauthorized: false, // For Render's PostgreSQL
-        },
+        } : false,
       },
       pool: {
         max: 5,
