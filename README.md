@@ -4,7 +4,7 @@ A peer-to-peer time-slot scheduling application that allows users to swap calend
 
 ## � Live Demo
 
-- **Frontend**: [https://slot-swapper-psl-two.vercel.app](https://slot-swapper-psl-two.vercel.app)
+- **Frontend**: [https://slot-swapper-psl-two.vercel.app](https://slot-swapper-psi-two.vercel.app/)
 - **Backend API**: [https://slot-swapper-r4uv.onrender.com](https://slot-swapper-r4uv.onrender.com)
 
 ## �📋 Overview
